@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AppUI.Models.Product>
+
+@{
+    ViewData["Title"] = "Index - Products";
+}
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SKU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UOM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SKU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UOM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td style="white-space: nowrap;">
+                    @Html.ActionLink("", "Edit", new { id = item.ProductId }, new { @class = "text-success fa fa-pen", style= "text-decoration: none;" }) |
+                    @Html.ActionLink("", "Details", new { id = item.ProductId }, new { @class = "text-info fa fa-info-circle", style = "text-decoration: none;" }) |
+                    @Html.ActionLink("", "Delete", new { id = item.ProductId }, new { @class = "text-danger fa fa-times-circle", style = "text-decoration: none;" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
